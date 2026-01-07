@@ -4,18 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/global.css" />
+    <script src="/js/carousel.js" defer></script>
     <title><% title %></title>
   </head>
   <body>
     <%- include('partials/header') %>
     <div class="main-container">
-      <section>
+      <section class="carousel-container">
         <h1>Featured</h1>
-
-        <div class="card-container">
+        <button class="arrow left" type="button">
+          <img src="/icons/nav-arrow-left.svg" alt="scroll left" />
+        </button>
+        <div class="card-container carousel">
           <% games.forEach(game => { %> <%- include('partials/gameCard', {game})
           %> <% }) %>
         </div>
+        <button class="arrow right" type="button">
+          <img src="/icons/nav-arrow-right.svg" alt="scroll right" />
+        </button>
       </section>
     </div>
   </body>

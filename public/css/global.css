@@ -164,6 +164,60 @@ header .logo {
   flex: 0 0 auto;
 }
 
+/* ========== SCROLLING =========== */
+
+.carousel-container {
+  position: relative;
+}
+
+.dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.644);
+  border: none;
+  border-radius: 50%;
+  padding: 0.2rem;
+  cursor: pointer;
+  z-index: 2;
+
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.arrow.left {
+  left: 10px;
+  padding-right: 0.3rem;
+}
+
+.arrow.right {
+  right: 10px;
+  padding-left: 0.3rem;
+}
+
+.arrow img {
+  width: 24px;
+}
+
+.card-container {
+  scrollbar-width: none;
+}
+
+/* Chrome, Edge, Safari */
+.card-container::-webkit-scrollbar {
+  display: none;
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+/* ========== SCROLLING =========== */
+
 /*========== CARD CONTAINER ==========*/
 
 /*========== GAME CARD ==========*/
