@@ -31,7 +31,7 @@ async function run() {
       CREATE TABLE IF NOT EXISTS games (
         id SERIAL PRIMARY KEY,
         name TEXT NOT NULL UNIQUE,
-        rating NUMERIC(2,1),
+        rating NUMERIC(3,1),
         release_date DATE NOT NULL,
         genre_id INTEGER REFERENCES genres(id),
         cover_img_url TEXT
@@ -99,35 +99,40 @@ async function run() {
         rating: 9.5,
         release_date: "2022-02-25",
         genre: "Action RPG",
-        cover_img_url: "",
+        cover_img_url:
+          "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
       },
       {
         name: "Hollow Knight: Silksong",
-        rating: null,
+        rating: 9.0,
         release_date: "2025-02-21",
         genre: "Platformer",
-        cover_img_url: "",
+        cover_img_url:
+          "https://images.igdb.com/igdb/image/upload/t_cover_big/coaend.png",
       },
       {
         name: "Expedition 33",
-        rating: 8.0,
+        rating: 10,
         release_date: "2024-11-12",
         genre: "Indie RPG",
-        cover_img_url: "",
+        cover_img_url:
+          "https://images.igdb.com/igdb/image/upload/t_cover_big/co9gam.png",
       },
       {
         name: "OMORI",
         rating: 8.7,
         release_date: "2020-12-25",
         genre: "Indie RPG",
-        cover_img_url: "",
+        cover_img_url:
+          "https://images.igdb.com/igdb/image/upload/t_cover_big/co1xlp.png",
       },
       {
         name: "The Last of Us",
-        rating: 9.8,
+        rating: 9,
         release_date: "2013-06-14",
         genre: "Adventure",
-        cover_img_url: "",
+        cover_img_url:
+          "https://images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.png",
       },
     ];
 
