@@ -1,8 +1,11 @@
+const { getAllGames } = require("../models/gamesModel");
 const { getNavLinks } = require("../models/navbarModel");
 
-function getHomePage(req, res) {
+async function getHomePage(req, res) {
   const links = getNavLinks();
-  res.render("index", { title: "Home Page", links });
+  const games = await getAllGames();
+  // console.log(games);
+  res.render("homePage", { title: "Home", links, games });
 }
 
 module.exports = {
