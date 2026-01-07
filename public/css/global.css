@@ -82,7 +82,7 @@ body {
   background-color: #273c2c;
   color: #acc3a6;
 }
-
+/* ========== HEADER ========== */
 header {
   padding: 1rem 3rem;
 }
@@ -109,18 +109,117 @@ nav .search {
   cursor: pointer;
 }
 
+.search img {
+  min-width: 100%;
+  max-width: 24px;
+}
+
 nav a {
   text-decoration: none;
   color: #acc3a6;
 }
 
 header .logo {
-  width: 35px;
+  max-width: 35px;
+  min-width: 100%;
   height: auto;
   filter: invert(88%) sepia(24%) saturate(223%) hue-rotate(62deg)
     brightness(83%) contrast(89%);
 }
 
+/* ========== HEADER ========== */
+
 .placeholder {
   text-align: center;
 }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+  gap: 4rem;
+}
+
+.main-container > section {
+  max-width: 60%;
+  width: 100%;
+}
+
+.main-container h1 {
+  width: max-content;
+  border-bottom: 2px #acc3a6 solid;
+}
+
+/*========== CARD CONTAINER ==========*/
+
+.card-container {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.card-container > * {
+  flex: 0 0 auto;
+}
+
+/*========== CARD CONTAINER ==========*/
+
+/*========== GAME CARD ==========*/
+.game-card {
+  cursor: pointer;
+  display: flex;
+  max-width: 190px;
+  width: 100%;
+  flex-direction: column;
+  background-color: #bbceb6;
+  color: black;
+  border-radius: 5px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.game-card__img {
+  background-color: rgb(168, 168, 168);
+  /* aspect-ratio: 2/3; */
+  width: 100%;
+  overflow: hidden;
+}
+
+.game-card__img > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.game-card__info {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.6rem;
+  font-size: 1.1rem;
+}
+
+.game-card__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.game-card__info > div {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.game-card__info p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-card:hover .game-card__title {
+  color: #396eaa;
+}
+/*========== GAME CARD ==========*/

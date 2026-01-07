@@ -1,0 +1,20 @@
+<a href="/games/<%= game.id %>" class="game-card">
+  <div class="game-card__img">
+    <img src="<%= game.cover_img_url %>" alt="" />
+  </div>
+  <div class="game-card__info">
+    <p class="game-card__title"><%= game.name %></p>
+    <div>
+      <p><%= game.genre %></p>
+      <p class="game-card__rating">
+        <img
+          style="display: inline-block"
+          width="12"
+          src="/icons/star-solid.svg"
+          alt="rating"
+        />
+        <%= game.rating %>
+      </p>
+    </div>
+  </div>
+</a>

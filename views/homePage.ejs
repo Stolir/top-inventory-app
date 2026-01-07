@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <title><% title %></title>
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="main-container">
+      <section>
+        <h1>Featured</h1>
+
+        <div class="card-container">
+          <% games.forEach(game => { %> <%- include('partials/gameCard', {game})
+          %> <% }) %>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
