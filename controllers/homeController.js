@@ -1,13 +1,19 @@
-const { getAllGames } = require("../models/gamesModel");
+const {
+  getAllGames,
+  getFeaturedGames,
+  getGameAwards,
+  getGameById,
+} = require("../models/gamesModel");
 const { getNavLinks } = require("../models/navbarModel");
 
-async function getHomePage(req, res) {
-  const links = getNavLinks();
-  const games = await getAllGames();
-  // console.log(games);
-  res.render("homePage", { title: "Home", links, games });
-}
+const links = getNavLinks();
 
+async function getHomePage(req, res) {
+  const featuredGames = await getFeaturedGames();
+  const gameAwards = await getGameAwards();
+  // console.log(games);
+  res.render("homePage", { title: "Home", links, featuredGames, gameAwards });
+}
 module.exports = {
   getHomePage,
 };

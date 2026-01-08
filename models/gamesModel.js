@@ -41,10 +41,10 @@ async function getGameAwards() {
 
 async function getGameById(id) {
   const query =
-    "SELECT games.*, genre.name FROM games JOIN genres ON games.genre_id=genres.id WHERE id = $1";
+    "SELECT games.*, genres.name AS genre FROM games JOIN genres ON games.genre_id=genres.id WHERE games.id = $1";
   try {
     const { rows } = await pool.query(query, [id]);
-    return rows;
+    return rows[0];
   } catch (err) {
     console.error(`Error getting game with id: ${id}`, err);
     throw err;

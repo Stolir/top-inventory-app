@@ -273,9 +273,9 @@ async function run() {
       ["The Last of Us", "Survival"],
       ["The Last of Us", "Horror"],
       ["The Last of Us", "Action"],
-      ["Expedition 33", "Action"],
-      ["Expedition 33", "Fantasy"],
-      ["Expedition 33", "Indie"],
+      ["Clair Obscur: Expedition 33", "Action"],
+      ["Clair Obscur: Expedition 33", "Fantasy"],
+      ["Clair Obscur: Expedition 33", "Indie"],
       ["Umamusume: Pretty Derby - Party Dash", "Party"],
       ["ARC Raiders", "Action"],
       ["ARC Raiders", "Science Fiction"],
@@ -331,6 +331,11 @@ async function run() {
       {
         name: "Baldur's Gate III",
         award: "Best Community Support",
+        year: "2025",
+      },
+      {
+        name: "Hades II",
+        award: "Best Action Game",
         year: "2025",
       },
     ];

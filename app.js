@@ -16,10 +16,10 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
 app.use("/developers", developersRouter);
 app.use("/games", gamesRouter);
 app.use("/genres", genresRouter);
+app.use("/", indexRouter);
 
 app.listen(PORT, (err) => {
   if (err) {
