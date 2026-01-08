@@ -16,8 +16,22 @@
           <img src="/icons/nav-arrow-left.svg" alt="scroll left" />
         </button>
         <div class="card-container carousel">
-          <% games.forEach(game => { %> <%- include('partials/gameCard', {game})
-          %> <% }) %>
+          <% featuredGames.forEach(game => { %> <%- include('partials/gameCard',
+          {game}) %> <% }) %>
+        </div>
+        <button class="arrow right" type="button">
+          <img src="/icons/nav-arrow-right.svg" alt="scroll right" />
+        </button>
+      </section>
+
+      <section class="carousel-container">
+        <h1>Game Awards 2025</h1>
+        <button class="arrow left" type="button">
+          <img src="/icons/nav-arrow-left.svg" alt="scroll left" />
+        </button>
+        <div class="card-container carousel">
+          <% gameAwards.forEach(game => { %> <%- include('partials/gameCard',
+          {game}) %> <% }) %>
         </div>
         <button class="arrow right" type="button">
           <img src="/icons/nav-arrow-right.svg" alt="scroll right" />
