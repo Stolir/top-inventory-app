@@ -26,7 +26,9 @@
         </p>
         <p>
           Developers: <% developers.forEach(developer => { %>
-          <a href="/developers/<%= developer.id %>"><%= developer.name %></a>
+          <a href="/developers/<%= developer.developer_id %>"
+            ><%= developer.name %></a
+          >
           <% }) %>
         </p>
       </div>
