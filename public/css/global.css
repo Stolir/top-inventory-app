@@ -301,3 +301,71 @@ header .logo {
 }
 
 /*========== GAME PAGE ==========*/
+
+/*========== ALL GAMES PAGE ==========*/
+
+.gamelist-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 60%;
+  gap: 2rem;
+}
+
+/*========== ALL GAMES PAGE ==========*/
+
+/*========== GENRE PAGE ==========*/
+
+.genres-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.genre-card {
+  background-color: #bbceb6;
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+.genre-card a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.genre-card:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+/*========== GENRE PAGE ==========*/
+
+/*========== DEVELOPER PAGE ==========*/
+
+.developers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.developer-card {
+  background-color: #bbceb6;
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+.developer-card a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.developer-card:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+/*========== DEVELOPER PAGE ==========*/
