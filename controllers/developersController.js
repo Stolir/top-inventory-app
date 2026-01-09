@@ -1,8 +1,11 @@
+const { getAllDevelopers } = require("../models/developersModel");
 const { getNavLinks } = require("../models/navbarModel");
 
-function getDevelopersPage(req, res) {
-  const links = getNavLinks();
-  res.render("placeholder", { title: "Developers", links });
+const links = getNavLinks();
+
+async function getDevelopersPage(req, res) {
+  const developers = await getAllDevelopers();
+  res.render("developersPage", { title: "Developers", links, developers });
 }
 
 module.exports = { getDevelopersPage };
