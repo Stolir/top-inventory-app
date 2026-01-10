@@ -8,10 +8,11 @@
       />
     </a>
     <ul>
-      <li>
-        <button type="button" class="search">
+      <li class="search">
+        <button type="button">
           <img src="/icons/search-white.svg" alt="search" />
         </button>
+        <input type="text" placeholder="Search" />
       </li>
       <% links.forEach(link => { %>
       <li><a href="<%= link.url %>"><%= link.name %></a></li>
