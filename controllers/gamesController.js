@@ -16,7 +16,6 @@ async function getGamePage(req, res) {
   const game = await getGameById(gameId);
   const tags = await getTagsByGameId(gameId);
   const developers = await getDeveloperByGameId(gameId);
-  console.log(developers);
   res.render("gamePage", { game, tags, developers, links });
 }
 

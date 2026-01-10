@@ -15,4 +15,20 @@ async function getDeveloperByGameId(gameId) {
   }
 }
 
-module.exports = { getDeveloperByGameId };
+async function getGamesByDeveloperId(developerId) {
+  const query = `
+  SELECT games.*, genres.name AS genre FROM games
+  JOIN genres ON games.genre_id = genres.id
+  WHERE games.id IN (SELECT game_id FROM game_developers WHERE developer_id=$1)
+  `;
+
+  try {
+    const { rows } = await pool.query(query, [developerId]);
+    return rows;
+  } catch (err) {
+    console.error("Error getting games by developer ID: ", err);
+    throw err;
+  }
+}
+
+module.exports = { getDeveloperByGameId, getGamesByDeveloperId };
