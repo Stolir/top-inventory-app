@@ -51,4 +51,26 @@ async function getGameById(id) {
   }
 }
 
-module.exports = { getAllGames, getFeaturedGames, getGameAwards, getGameById };
+async function getGamesByGenreId(genreId) {
+  const query = `
+  SELECT games.*, genres.name AS genre FROM games
+  JOIN genres ON games.genre_id=genres.id
+  WHERE genre_id = $1
+  `;
+
+  try {
+    const { rows } = await pool.query(query, [genreId]);
+    return rows;
+  } catch (err) {
+    console.error("Error getting games by genre ID: ", err);
+    throw err;
+  }
+}
+
+module.exports = {
+  getAllGames,
+  getFeaturedGames,
+  getGameAwards,
+  getGameById,
+  getGamesByGenreId,
+};

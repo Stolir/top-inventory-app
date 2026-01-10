@@ -20,7 +20,7 @@ carouselContainers.forEach((carouselContainer) => {
   // arrow scrolling
   const arrowLeft = carouselContainer.querySelector(".arrow.left");
   const arrowRight = carouselContainer.querySelector(".arrow.right");
-  const scrollAmount = carousel.clientWidth * 0.5;
+  const scrollAmount = carousel.clientWidth * 0.8;
   if (arrowLeft) {
     arrowLeft.addEventListener("click", () => {
       console.log("scrolling");

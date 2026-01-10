@@ -112,6 +112,39 @@ nav > ul > li {
 }
 
 nav .search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+nav .search input {
+  border: none;
+  border-radius: 15px;
+  background-color: #bfccbc;
+  outline: none;
+  padding: 0.1rem 1rem;
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  position: absolute;
+  right: 100%;
+}
+
+@media (max-width: 767px) {
+  nav .search input {
+    right: auto;
+    top: 150%;
+  }
+}
+
+nav .search input.active {
+  width: 200px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+nav .search button {
   background: none;
   border: none;
   cursor: pointer;
