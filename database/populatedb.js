@@ -104,7 +104,6 @@ async function run() {
       "Emotional",
       "Survival",
       "Party",
-      "Historical",
       "Sports",
       "Action",
       "Science Fiction",

@@ -5,34 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/global.css" />
     <title><%= game.name %></title>
-    <script src="/js/navbar.js" defer></script>
+    <script src="/js/searchOverlay.js" defer></script>
   </head>
   <body>
-    <%- include('partials/header', {links}) %>
-
-    <section class="game-container">
-      <div class="game-container__img">
-        <img src="<%= game.cover_img_url %>" alt="" />
-      </div>
-      <div class="game-container__info">
-        <h2><%= game.name %></h2>
-        <p>Release Date: <%= new Date(game.release_date).getFullYear(); %></p>
-        <p>
-          Genre: <a href="/genres/<%= game.genre_id %>"><%= game.genre %></a>
-        </p>
-        <p>
-          Tags: <% tags.forEach(tag => { %>
-          <a href="/tags/<%= tag.id %>"><%= tag.name %></a>
-          <% }) %>
-        </p>
-        <p>
-          Developers: <% developers.forEach(developer => { %>
-          <a href="/developers/<%= developer.developer_id %>"
-            ><%= developer.name %></a
-          >
-          <% }) %>
-        </p>
-      </div>
-    </section>
+    <div id="page-content">
+      <%- include('partials/header', {links}) %>
+      <section class="game-container">
+        <div class="game-container__img">
+          <img src="<%= game.cover_img_url %>" alt="" />
+        </div>
+        <div class="game-container__info">
+          <h2><%= game.name %></h2>
+          <p>Release Date: <%= new Date(game.release_date).getFullYear(); %></p>
+          <p>
+            Genre: <a href="/genres/<%= game.genre_id %>"><%= game.genre %></a>
+          </p>
+          <p>
+            Tags: <% tags.forEach(tag => { %>
+            <a href="/tags/<%= tag.id %>"><%= tag.name %></a>
+            <% }) %>
+          </p>
+          <p>
+            Developers: <% developers.forEach(developer => { %>
+            <a href="/developers/<%= developer.developer_id %>"
+              ><%= developer.name %></a
+            >
+            <% }) %>
+          </p>
+        </div>
+      </section>
+    </div>
+    <%- include('partials/searchOverlay') %>
   </body>
 </html>
