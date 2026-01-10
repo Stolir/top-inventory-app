@@ -410,3 +410,31 @@ header .logo {
 }
 
 /*========== DEVELOPER PAGE ==========*/
+
+/*========== TAGS PAGE ==========*/
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tag-card {
+  background-color: #bbceb6;
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+.tag-card a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.tag-card:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+/*========== TAGS PAGE ==========*/
