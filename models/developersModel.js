@@ -28,4 +28,22 @@ async function getDeveloperById(developerId) {
   }
 }
 
-module.exports = { getAllDevelopers, getDeveloperById };
+async function getDevelopersBySearchQuery(search) {
+  const query = `
+  SELECT id, name FROM developers WHERE name ILIKE $1
+  `;
+
+  try {
+    const { rows } = await pool.query(query, [`%${search}%`]);
+    return rows;
+  } catch (err) {
+    console.error("Error getting developers by search query: ", err);
+    throw err;
+  }
+}
+
+module.exports = {
+  getAllDevelopers,
+  getDeveloperById,
+  getDevelopersBySearchQuery,
+};

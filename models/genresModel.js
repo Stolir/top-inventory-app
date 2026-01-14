@@ -28,4 +28,18 @@ async function getGenreById(genreId) {
   }
 }
 
-module.exports = { getAllGenres, getGenreById };
+async function getGenresBySearchQuery(search) {
+  const query = `
+  SELECT id, name FROM genres WHERE name ILIKE $1
+  `;
+
+  try {
+    const { rows } = await pool.query(query, [`%${search}%`]);
+    return rows;
+  } catch (err) {
+    console.error("Error getting genres by search query: ", err);
+    throw err;
+  }
+}
+
+module.exports = { getAllGenres, getGenreById, getGenresBySearchQuery };

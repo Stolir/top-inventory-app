@@ -179,46 +179,56 @@ body.search-open {
   opacity: 0.7;
 }
 
-.search-section {
-}
-
 @media (max-width: 1024px) {
   .search-section {
     max-width: 75%;
   }
 }
 
+.search-section__results {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(0, 0, 0) rgba(255, 0, 0, 0);
+}
+
+.search-section__results h1 {
+  font-size: 1.8rem;
+}
+.search-section__results section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: black;
+}
+
+.search-section__results section a {
+  text-decoration: none;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.055);
+  color: inherit;
+}
+
+.search-section__results section a:hover {
+  background: rgba(0, 0, 0, 0.322);
+  color: white;
+}
+
+.search-result__item-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-result__item-container img {
+  max-width: 60px;
+}
+
 /* ======== SEARCH SECTION ========= */
-
-/*
-
-nav .search input {
-  border: none;
-  border-radius: 15px;
-  background-color: #bfccbc;
-  outline: none;
-  padding: 0.1rem 1rem;
-  width: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: width 0.3s ease, opacity 0.3s ease;
-  position: absolute;
-  right: 100%;
-}
-
-@media (max-width: 767px) {
-  nav .search input {
-    right: auto;
-    top: 150%;
-  }
-}
-
-nav .search input.active {
-  width: 200px;
-  opacity: 1;
-  pointer-events: auto;
-}
- */
 nav .search button {
   background: none;
   border: none;
@@ -296,14 +306,14 @@ header .logo {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.644);
+  background: rgba(255, 255, 255);
   border: none;
   border-radius: 50%;
   padding: 0.2rem;
   cursor: pointer;
   z-index: 2;
 
-  opacity: 0.6;
+  opacity: 0.8;
   transition: opacity 0.2s;
 }
 
@@ -323,6 +333,7 @@ header .logo {
 
 .card-container {
   scrollbar-width: none;
+  scrollbar-color: #acc3a6 rgba(0, 0, 0, 0);
 }
 
 /* Chrome, Edge, Safari */

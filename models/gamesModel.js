@@ -67,10 +67,25 @@ async function getGamesByGenreId(genreId) {
   }
 }
 
+async function getGamesBySearchQuery(search) {
+  const query = `
+  SELECT id, name, release_date, cover_img_url FROM games WHERE name ILIKE $1
+  `;
+
+  try {
+    const { rows } = await pool.query(query, [`%${search}%`]);
+    return rows;
+  } catch (err) {
+    console.error("Error getting games by search query: ", err);
+    throw err;
+  }
+}
+
 module.exports = {
   getAllGames,
   getFeaturedGames,
   getGameAwards,
   getGameById,
   getGamesByGenreId,
+  getGamesBySearchQuery,
 };

@@ -28,4 +28,18 @@ async function getTagById(tagId) {
   }
 }
 
-module.exports = { getAllTags, getTagById };
+async function getTagsBySearchQuery(search) {
+  const query = `
+  SELECT id, name FROM tags WHERE name ILIKE $1
+  `;
+
+  try {
+    const { rows } = await pool.query(query, [`%${search}%`]);
+    return rows;
+  } catch (err) {
+    console.error("Error getting tags by search query: ", err);
+    throw err;
+  }
+}
+
+module.exports = { getAllTags, getTagById, getTagsBySearchQuery };
