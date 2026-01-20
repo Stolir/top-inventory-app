@@ -1,0 +1,48 @@
+<div id="edit-backdrop" hidden>
+  <section class="edit-game-overlay">
+    <form action="/games/<%= action %>" method="POST">
+      <div>
+        <label for="gameName">Game Name</label>
+        <input type="text" name="gameName" value="<%= game ? game.name : "" %>" required/>
+      </div>
+      <div>
+        <label for="rating">Rating</label>
+        <input type="number" step="0.5" min="0" max="10" name="rating" value="<%= game ? game.rating : "" %>"/>
+      </div>
+      <div>
+        <label for="release_date">Release Date</label>
+        <input type="date" name="release-date" value="<%= game ? new Date(game.release_date).toLocaleDateString('en-CA') : "" %>" required />
+      </div>
+      <div>
+        <label for="genre">Genre</label>
+        <select name="genre" id="genre" required>
+          <option value="" disabled selected>-- Select Game Genre --</option>
+          <% genres.forEach(genre => { %>
+          <option value="<%= genre.id %>" <%= game.genre === genre.name ? 'selected' : '' %>><%= genre.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div>
+        <label for="tags">Tags</label>
+        <select name="tags" id="tags-select" multiple>
+          <% allTags.forEach(tag => { %>
+           <option value="<%= tag.id %>" <%= tags.some(gameTag => gameTag.tag_id === tag.id) ? "selected" : "" %>><%= tag.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div>
+        <label for="cover_img_url">Cover Image URL</label>
+        <input
+          type="text"
+          name="cover_img_url"
+          placeholder="Link to cdn cover image URL"
+          value="<%= game.cover_img_url %>"
+        />
+      </div>
+      <div class="edit-game-overlay__controls">
+        <button type="submit">Save</button>
+        <button id="cancel-edit" type="button">Cancel</button>
+      </div>
+    </form>
+  </section>
+</div>

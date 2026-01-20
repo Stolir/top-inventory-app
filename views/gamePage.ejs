@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/css/global.css" />
     <title><%= game.name %></title>
     <script src="/js/searchOverlay.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js" defer></script>
+    <script src="/js/editGameOverlay.js" defer></script>
   </head>
   <body>
     <div id="page-content">
@@ -16,7 +19,7 @@
         </div>
         <div class="game-container__info">
           <h2><%= game.name %></h2>
-          <p>Release Date: <%= new Date(game.release_date).getFullYear(); %></p>
+          <p>Release Date: <%= new Date(game.release_date).toLocaleDateString('en-CA') %></p>
           <p>
             Genre: <a href="/genres/<%= game.genre_id %>"><%= game.genre %></a>
           </p>
@@ -32,9 +35,20 @@
             >
             <% }) %>
           </p>
+          <div class="game-container__controls">
+            <form
+              action="/games/<%= game.id %>/delete"
+              method="POST"
+              onsubmit="return confirm('Are you sure you want to delete <%= game.name %>?')"
+            >
+              <button type="submit">Delete</button>
+            </form>
+            <button id="updateGame" type="button">Update</button>
+          </div>
         </div>
       </section>
     </div>
     <%- include('partials/searchOverlay') %>
+    <%- include('partials/editGameOverlay', {game, genres, action: `${game.id}/update`, tags, allTags}) %>
   </body>
 </html>
