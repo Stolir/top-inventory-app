@@ -1,0 +1,16 @@
+<div role="alert" id="error-alert">
+  <h3>An error occurred</h3>
+  <ul>
+  <% errors.forEach(error => { %>
+   <li><%= error.msg %></li>
+  <% }) %>
+  </ul>
+  <button id="close-alert"><img src="/icons/xmark.svg" alt=""></button>
+</div>
+<script>
+  const alert = document.querySelector('#error-alert')
+  const closeBtn = document.querySelector('#close-alert');
+  closeBtn.addEventListener("click", ()=> {
+    alert.hidden = true;
+  })
+</script>

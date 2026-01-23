@@ -3,9 +3,11 @@ const editGameOverlay = document.querySelector(".edit-game-overlay");
 const updateBtn = document.getElementById("updateGame");
 const cancelBtn = document.querySelector("#cancel-edit");
 
-updateBtn.addEventListener("click", () => {
-  openEdit();
-});
+if (updateBtn) {
+  updateBtn.addEventListener("click", () => {
+    openEdit();
+  });
+}
 
 cancelBtn.addEventListener("click", () => {
   closeEdit();
@@ -37,3 +39,15 @@ editGameOverlayBackdrop.addEventListener("click", (e) => {
 
 // Choices library multiple select config
 const tagsSelect = new Choices("#tags-select", { removeItemButton: true });
+const developersSelect = new Choices("#developers-select", {
+  removeItemButton: true,
+});
+
+// All games page
+const addNewBtn = document.querySelector(".add-new.game");
+
+if (addNewBtn) {
+  addNewBtn.addEventListener("click", () => {
+    openEdit();
+  });
+}

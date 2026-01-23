@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/global.css" />
     <script src="/js/searchOverlay.js" defer></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js" defer></script>
+    <script src="/js/editGameOverlay.js" defer></script>
     <title><%= title %></title>
   </head>
   <body>
@@ -17,7 +20,12 @@
           %> <% }) %>
         </section>
       </div>
+      <button class="add-new game"><img src="/icons/plus-circle-solid.svg" alt="add new game"></button>
     </div>
     <%- include('partials/searchOverlay') %>
+    <%- include('partials/editGameOverlay', {action: `add`, allTags, allDevelopers, genres}) %>
+    <% if (typeof errors !== 'undefined') { %>
+     <%- include('partials/errorAlert', {errors}) %>
+    <% } %>
   </body>
 </html>

@@ -436,6 +436,7 @@ header .logo {
 /* ======== SEARCH SECTION ========= */
 
 #page-content.blur {
+  position: relative;
   opacity: 0.3;
 }
 
@@ -625,3 +626,47 @@ body.search-open {
   background-color: #273c2c9a;
 }
 /* ======== EDIT GAME OVERLAY ========= */
+
+/* ======== ERROR ALERT ========= */
+
+#error-alert {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(150, 21, 21);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+#error-alert #close-alert {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* ======== ERROR ALERT ========= */
+
+/* ======== ADD GAME BUTTON ========= */
+
+button.add-new {
+  position: fixed;
+  width: 40px;
+  bottom: 5%;
+  right: 2%;
+  background: none;
+  border: none;
+  max-width: 60px;
+  width: 100%;
+  cursor: pointer;
+}
+
+button.add-new img {
+  width: 100%;
+}
+
+/* ======== ADD GAME BUTTON ========= */

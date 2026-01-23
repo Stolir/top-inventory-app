@@ -1,4 +1,5 @@
 const pool = require("../database/pool");
+const { normalizeIntArray } = require("../public/js/helper");
 
 async function getDeveloperByGameId(gameId) {
   const query = `
@@ -31,4 +32,55 @@ async function getGamesByDeveloperId(developerId) {
   }
 }
 
-module.exports = { getDeveloperByGameId, getGamesByDeveloperId };
+async function updateGameDevelopers(gameId, developers) {
+  const normalizedDevs = normalizeIntArray(developers);
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    await client.query(`DELETE FROM game_developers WHERE game_id = $1`, [
+      gameId,
+    ]);
+
+    const insertQuery = `
+      INSERT INTO game_developers (game_id, developer_id)
+      SELECT $1, unnest($2::int[])
+    `;
+
+    await client.query(insertQuery, [gameId, normalizedDevs]);
+
+    await client.query(`COMMIT`);
+  } catch (err) {
+    await client.query(`ROLLBACK`);
+    console.error(`Error updating game developers for gameId ${gameId}: `, err);
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+
+async function addGameDevelopers(gameId, developers) {
+  if (!developers || !developers.length) {
+    return;
+  }
+
+  const normalizedDevs = normalizeIntArray(developers);
+  const query = `
+  INSERT INTO game_developers (game_id, developer_id)
+  SELECT $1, unnest($2::int[])
+  `;
+
+  try {
+    await pool.query(query, [gameId, normalizedDevs]);
+  } catch (err) {
+    console.error(`Error adding developers to game, game ID ${gameId}: `, err);
+    throw err;
+  }
+}
+
+module.exports = {
+  getDeveloperByGameId,
+  getGamesByDeveloperId,
+  addGameDevelopers,
+  updateGameDevelopers,
+  addGameDevelopers,
+};

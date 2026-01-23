@@ -1,13 +1,13 @@
-function normalizeTags(tags) {
-  if (!Array.isArray(tags)) throw new Error("Tags must be an array.");
+function normalizeIntArray(array) {
+  if (!Array.isArray(array)) throw new Error("Value must be an array.");
 
-  return tags.map((tag) => {
-    const num = Number(tag); // convert string to number
+  return array.map((item) => {
+    const num = Number(item); // convert string to number
     if (!Number.isInteger(num)) {
-      throw new Error(`Invalid tag value: ${tag}. Must be an integer.`);
+      throw new Error(`Invalid value: ${item}. Must be an integer.`);
     }
     return num;
   });
 }
 
-module.exports = { normalizeTags };
+module.exports = { normalizeIntArray };

@@ -276,6 +276,7 @@ async function run() {
       ["Clair Obscur: Expedition 33", "Fantasy"],
       ["Clair Obscur: Expedition 33", "Indie"],
       ["Umamusume: Pretty Derby - Party Dash", "Party"],
+      ["Umamusume: Pretty Derby - Party Dash", "Sports"],
       ["ARC Raiders", "Action"],
       ["ARC Raiders", "Science Fiction"],
       ["Hades II", "Action"],

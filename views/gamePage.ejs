@@ -20,9 +20,11 @@
         <div class="game-container__info">
           <h2><%= game.name %></h2>
           <p>Release Date: <%= new Date(game.release_date).toLocaleDateString('en-CA') %></p>
+           <p>Rating: <%= game.rating %></p>
           <p>
             Genre: <a href="/genres/<%= game.genre_id %>"><%= game.genre %></a>
           </p>
+         
           <p>
             Tags: <% tags.forEach(tag => { %>
             <a href="/tags/<%= tag.id %>"><%= tag.name %></a>
@@ -49,6 +51,9 @@
       </section>
     </div>
     <%- include('partials/searchOverlay') %>
-    <%- include('partials/editGameOverlay', {game, genres, action: `${game.id}/update`, tags, allTags}) %>
+    <%- include('partials/editGameOverlay', {game, genres, action: `${game.id}/update`, tags, developers, allTags, allDevelopers}) %>
+    <% if (typeof errors !== 'undefined') { %>
+     <%- include('partials/errorAlert', {errors}) %>
+    <% } %>
   </body>
 </html>
