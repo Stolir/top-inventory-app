@@ -1,0 +1,14 @@
+<div id="edit-backdrop" hidden>
+  <section class="edit-game-overlay">
+    <form action="/games/<%= action %>" method="POST">
+      <div>
+        <label for="genre">Game Name</label>
+        <input type="text" name="genre" required />
+      </div>
+      <div class="edit-game-overlay__controls">
+        <button type="submit">Save</button>
+        <button id="cancel-edit" type="button">Cancel</button>
+      </div>
+    </form>
+  </section>
+</div>

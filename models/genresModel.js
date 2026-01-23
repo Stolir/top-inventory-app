@@ -42,4 +42,22 @@ async function getGenresBySearchQuery(search) {
   }
 }
 
-module.exports = { getAllGenres, getGenreById, getGenresBySearchQuery };
+async function deleteGenreById(genreId) {
+  const query = `
+  DELETE FROM genres WHERE id = $1
+  `;
+
+  try {
+    await pool.query(query, [genreId]);
+  } catch (err) {
+    console.error("Error deleting genre: ", err);
+    throw err;
+  }
+}
+
+module.exports = {
+  getAllGenres,
+  getGenreById,
+  getGenresBySearchQuery,
+  deleteGenreById,
+};

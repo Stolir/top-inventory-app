@@ -1,0 +1,20 @@
+<div class="category-card">
+  <a href="/<%= category %>/<%= item.id %>"><%= item.name %></a>
+  <form
+    action="/<%= category %>/<%= item.id %>/delete"
+    method="POST"
+    onsubmit="return confirm(getConfirmMessage(category, item));"
+  >
+    <button>
+      <img src="/icons/trash-solid.svg" alt="delete <%= category %>" />
+    </button>
+  </form>
+</div>
+<script defer>
+  function getConfirmMessage(category, item) {
+    if (category === "genres") {
+      return "Deleting <%= item.name %> deletes games that belong to it, are you sure you want to continue?";
+    } else {
+    }
+  }
+</script>

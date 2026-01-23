@@ -6,7 +6,12 @@ const links = getNavLinks();
 
 async function getAllTagsPage(req, res) {
   const tags = await getAllTags();
-  res.render("tagsPage", { title: "Tags", tags, links });
+  res.render("categoryPage", {
+    title: "Tags",
+    categoryData: tags,
+    category: "tags",
+    links,
+  });
 }
 
 async function getTagPage(req, res) {
@@ -14,7 +19,7 @@ async function getTagPage(req, res) {
   const games = await getGamesByTagId(tagId);
   const tag = await getTagById(tagId);
 
-  res.render("allGamesPage", { title: `${tag} Games`, games, links });
+  res.render("filteredGamesPage", { title: `${tag} Games`, games, links });
 }
 
 module.exports = {

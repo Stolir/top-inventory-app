@@ -360,15 +360,18 @@ header .logo {
 
 /*========== GENRE PAGE ==========*/
 
-.genres-container {
+.category-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
 }
 
-.genre-card {
+.category-card {
+  display: flex;
+  gap: 0.5rem;
   background-color: #bbceb6;
+
   padding: 1.5rem;
   border-radius: 15px;
   text-decoration: none;
@@ -376,9 +379,26 @@ header .logo {
   font-weight: bold;
 }
 
-.genre-card:hover {
-  cursor: pointer;
+.category-card button {
+  background: none;
+  border: none;
+}
+
+.category-card a {
+  text-decoration: none;
+  color: #273c2c;
+}
+
+.category-card > *:hover {
   opacity: 0.5;
+}
+
+.category-card *:hover {
+  cursor: pointer;
+}
+
+.category-card form button img {
+  width: 20px;
 }
 
 /*========== GENRE PAGE ==========*/

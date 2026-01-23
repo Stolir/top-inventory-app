@@ -9,7 +9,12 @@ const links = getNavLinks();
 
 async function getAllDevelopersPage(req, res) {
   const developers = await getAllDevelopers();
-  res.render("developersPage", { title: "Developers", links, developers });
+  res.render("categoryPage", {
+    title: "Developers",
+    links,
+    category: "developers",
+    categoryData: developers,
+  });
 }
 
 async function getDeveloperPage(req, res) {
@@ -17,7 +22,11 @@ async function getDeveloperPage(req, res) {
   const games = await getGamesByDeveloperId(developerId);
   const developer = await getDeveloperById(developerId);
 
-  res.render("allGamesPage", { title: `Games by ${developer}`, games, links });
+  res.render("filteredGamesPage", {
+    title: `Games by ${developer}`,
+    games,
+    links,
+  });
 }
 
 module.exports = { getAllDevelopersPage, getDeveloperPage };

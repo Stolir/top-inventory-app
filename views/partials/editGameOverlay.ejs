@@ -23,7 +23,7 @@
       </div>
       <div>
         <label for="genre">Genre</label>
-        <select name="genre" id="genre" required>
+        <select name="genre" id="genre">
           <option value="" disabled selected>-- Select Game Genre --</option>
           <% genres.forEach(genre => { %>
           <option value="<%= genre.id %>" <%= typeof game !== "undefined" && game.genre === genre.name ? 'selected' : '' %>><%= genre.name %></option>
@@ -32,7 +32,7 @@
       </div>
       <div>
         <label for="developers">Developer</label>
-        <select name="developers[]" id="developers-select" multiple required>
+        <select name="developers[]" id="developers-select" multiple>
           <% allDevelopers.forEach(developer => { %>
            <option value="<%= developer.id %>" <%= typeof game !== "undefined" && developers.some(gameDev => gameDev.developer_id === developer.id) ? "selected" : "" %>><%= developer.name %></option>
           <% }) %>

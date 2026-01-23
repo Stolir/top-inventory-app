@@ -2,7 +2,7 @@ const pool = require("../database/pool");
 
 async function getAllGames() {
   const query =
-    "SELECT games.*, genres.name AS genre FROM games JOIN genres ON games.genre_id=genres.id ORDER BY games.id ASC";
+    "SELECT games.*, genres.name AS genre FROM games FULL JOIN genres ON games.genre_id=genres.id ORDER BY games.id ASC";
 
   try {
     const { rows } = await pool.query(query);
@@ -41,7 +41,7 @@ async function getGameAwards() {
 
 async function getGameById(id) {
   const query =
-    "SELECT games.*, genres.name AS genre FROM games JOIN genres ON games.genre_id=genres.id WHERE games.id = $1";
+    "SELECT games.*, genres.name AS genre FROM games FULL JOIN genres ON games.genre_id=genres.id WHERE games.id = $1";
   try {
     const { rows } = await pool.query(query, [id]);
     return rows[0];
@@ -137,7 +137,7 @@ async function addGame(data) {
       data.gameName,
       data.rating ?? null,
       data.release_date,
-      data.genre,
+      data.genre ?? null,
       data.cover_img_url ||
         "https://i.ibb.co/TMSqdPPn/no-cover-show-ef1e36c00e101c2fb23d15bb80edd9667bbf604a12fc0267a66033afea320c65-Photoroom-1.png",
     ]);

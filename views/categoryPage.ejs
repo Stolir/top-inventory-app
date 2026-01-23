@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="css/global.css" />
     <script src="/js/searchOverlay.js" defer></script>
     <title><%= title %></title>
   </head>
@@ -12,9 +12,9 @@
       <%- include('partials/header', {links}) %>
       <div class="main-container">
         <h1><%= title %></h1>
-        <section class="tags-container">
-          <% tags.forEach(tag => { %> <%- include('partials/tagCard', {tag}) %>
-          <% }) %>
+        <section class="category-container">
+          <% categoryData.forEach(item => { %> <%- include('partials/categoryCard',
+          {category, item}) %> <% }) %>
         </section>
       </div>
     </div>

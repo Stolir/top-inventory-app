@@ -48,14 +48,11 @@ const validateGameData = [
     .withMessage("Invalid date format")
     .toDate(),
   body("genre")
-    .notEmpty()
-    .withMessage("Genre is required")
-    .bail()
+    .optional({ values: "falsy" })
     .isInt()
     .withMessage("Invalid Genre"),
   body("developers")
-    .notEmpty()
-    .withMessage("Developers is required")
+    .optional({ values: "falsy" })
     .isArray()
     .withMessage("Developers must be an array"),
   body("tags").optional().isArray().withMessage("Tags must be an array."),
@@ -184,7 +181,7 @@ const postGameAdd = [
     const newGameId = await addGame(data);
     await Promise.all([
       addGameTags(newGameId, data.tags),
-      addGameDevelopers(newGameId, data.developers),
+      data.developers && addGameDevelopers(newGameId, data.developers),
     ]);
     res.redirect("/games");
   },

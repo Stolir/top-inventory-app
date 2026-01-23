@@ -33,7 +33,7 @@ async function run() {
         name TEXT NOT NULL UNIQUE,
         rating NUMERIC(3,1),
         release_date DATE NOT NULL,
-        genre_id INTEGER REFERENCES genres(id),
+        genre_id INTEGER REFERENCES genres(id) ON DELETE SET NULL,
         cover_img_url TEXT
       );
 
@@ -57,7 +57,7 @@ async function run() {
       );
 
       CREATE TABLE IF NOT EXISTS featured_games (
-      game_id INT NOT NULL REFERENCES games(id)
+      game_id INT PRIMARY KEY REFERENCES games(id) ON DELETE CASCADE
       );
     `);
 
@@ -69,7 +69,7 @@ async function run() {
     for (const genre of genres) {
       await client.query(
         `INSERT INTO genres(name) VALUES($1) ON CONFLICT (name) DO NOTHING`,
-        [genre]
+        [genre],
       );
     }
 
@@ -92,7 +92,7 @@ async function run() {
     for (const dev of developers) {
       await client.query(
         `INSERT INTO developers(name) VALUES($1) ON CONFLICT (name) DO NOTHING`,
-        [dev]
+        [dev],
       );
     }
 
@@ -117,7 +117,7 @@ async function run() {
     for (const tag of tags) {
       await client.query(
         `INSERT INTO tags(name) VALUES($1) ON CONFLICT (name) DO NOTHING`,
-        [tag]
+        [tag],
       );
     }
 
@@ -224,14 +224,14 @@ async function run() {
     for (const g of games) {
       const { rows } = await client.query(
         `SELECT id FROM genres WHERE name = $1`,
-        [g.genre]
+        [g.genre],
       );
       const genre_id = rows[0]?.id || null;
       await client.query(
         `INSERT INTO games(name, rating, release_date, genre_id, cover_img_url)
          VALUES($1,$2,$3,$4,$5)
          ON CONFLICT (name) DO NOTHING`,
-        [g.name, g.rating, g.release_date, genre_id, g.cover_img_url]
+        [g.name, g.rating, g.release_date, genre_id, g.cover_img_url],
       );
     }
 
@@ -257,7 +257,7 @@ async function run() {
          SELECT g.id, d.id FROM games g, developers d
          WHERE g.name = $1 AND d.name = $2
          ON CONFLICT DO NOTHING`,
-        [gameName, devName]
+        [gameName, devName],
       );
     }
 
@@ -302,7 +302,7 @@ async function run() {
          SELECT g.id, t.id FROM games g, tags t
          WHERE g.name = $1 AND t.name = $2
          ON CONFLICT DO NOTHING`,
-        [gameName, tagName]
+        [gameName, tagName],
       );
     }
 
@@ -343,14 +343,14 @@ async function run() {
     for (const g of gameAwards) {
       const { rows } = await client.query(
         `SELECT id FROM games WHERE name = $1`,
-        [g.name]
+        [g.name],
       );
       const game_id = rows[0]?.id || null;
       await client.query(
         `INSERT INTO award_winners(game_id, award_name, year)
          VALUES($1, $2, $3) ON CONFLICT DO NOTHING
         `,
-        [game_id, g.award, g.year]
+        [game_id, g.award, g.year],
       );
     }
 
@@ -367,7 +367,7 @@ async function run() {
     for (const g of featuredGames) {
       const { rows } = await client.query(
         `SELECT id FROM games WHERE name = $1`,
-        [g]
+        [g],
       );
       const game_id = rows[0]?.id || null;
       await client.query(
@@ -375,7 +375,7 @@ async function run() {
         INSERT INTO featured_games(game_id)
         VALUES ($1)
         `,
-        [game_id]
+        [game_id],
       );
     }
 
