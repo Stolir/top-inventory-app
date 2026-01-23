@@ -1,9 +1,9 @@
-<div id="edit-backdrop" hidden>
+<div id="edit-backdrop" class="category" hidden>
   <section class="edit-game-overlay">
-    <form action="/games/<%= action %>" method="POST">
+    <form action="/<%= category %>/add" method="POST">
       <div>
-        <label for="genre">Game Name</label>
-        <input type="text" name="genre" required />
+        <label for="name"><%= title.slice(0, -1)%> Name</label>
+        <input type="text" name="name" required />
       </div>
       <div class="edit-game-overlay__controls">
         <button type="submit">Save</button>

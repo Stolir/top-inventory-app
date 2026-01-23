@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/global.css" />
     <script src="/js/searchOverlay.js" defer></script>
+    <script src="/js/addCategoryOverlay.js" defer></script>
     <title><%= title %></title>
   </head>
   <body>
@@ -17,7 +18,9 @@
           {category, item}) %> <% }) %>
         </section>
       </div>
+      <button class="add-new category"><img src="/icons/plus-circle-solid.svg" alt="add new game"></button>
     </div>
     <%- include('partials/searchOverlay') %>
+    <%- include('partials/addCategoryOverlay', {category, title}) %>
   </body>
 </html>

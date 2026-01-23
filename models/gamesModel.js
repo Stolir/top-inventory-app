@@ -2,7 +2,7 @@ const pool = require("../database/pool");
 
 async function getAllGames() {
   const query =
-    "SELECT games.*, genres.name AS genre FROM games FULL JOIN genres ON games.genre_id=genres.id ORDER BY games.id ASC";
+    "SELECT games.*, genres.name AS genre FROM games LEFT JOIN genres ON games.genre_id=genres.id ORDER BY games.id ASC";
 
   try {
     const { rows } = await pool.query(query);
@@ -41,7 +41,7 @@ async function getGameAwards() {
 
 async function getGameById(id) {
   const query =
-    "SELECT games.*, genres.name AS genre FROM games FULL JOIN genres ON games.genre_id=genres.id WHERE games.id = $1";
+    "SELECT games.*, genres.name AS genre FROM games LEFT JOIN genres ON games.genre_id=genres.id WHERE games.id = $1";
   try {
     const { rows } = await pool.query(query, [id]);
     return rows[0];

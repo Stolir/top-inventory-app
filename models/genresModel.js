@@ -55,9 +55,23 @@ async function deleteGenreById(genreId) {
   }
 }
 
+async function addGenre(genre) {
+  const query = `
+  INSERT INTO genres (name) VALUES ($1)
+  `;
+
+  try {
+    await pool.query(query, [genre.name]);
+  } catch (err) {
+    console.error("Error adding genre: ", err);
+    throw err;
+  }
+}
+
 module.exports = {
   getAllGenres,
   getGenreById,
   getGenresBySearchQuery,
   deleteGenreById,
+  addGenre,
 };

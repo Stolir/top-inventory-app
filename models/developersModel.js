@@ -9,7 +9,7 @@ async function getAllDevelopers() {
     const { rows } = await pool.query(query);
     return rows;
   } catch (err) {
-    console.error("Error getting all genres: ", err);
+    console.error("Error getting all developers: ", err);
     throw err;
   }
 }
@@ -55,9 +55,23 @@ async function deleteDeveloperById(developerId) {
   }
 }
 
+async function addDeveloper(developer) {
+  const query = `
+  INSERT INTO developers (name) VALUES ($1)
+  `;
+
+  try {
+    await pool.query(query, [developer.name]);
+  } catch (err) {
+    console.error("Error adding developer: ", err);
+    throw err;
+  }
+}
+
 module.exports = {
   getAllDevelopers,
   getDeveloperById,
   getDevelopersBySearchQuery,
   deleteDeveloperById,
+  addDeveloper,
 };

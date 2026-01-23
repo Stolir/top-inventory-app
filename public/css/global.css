@@ -593,6 +593,10 @@ body.search-open {
   color: black;
 }
 
+#edit-backdrop.category .edit-game-overlay {
+  height: 25%;
+}
+
 .edit-game-overlay form {
   display: flex;
   flex-direction: column;

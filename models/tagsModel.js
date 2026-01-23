@@ -9,7 +9,7 @@ async function getAllTags() {
     const { rows } = await pool.query(query);
     return rows;
   } catch (err) {
-    console.error("Error getting all genres: ", err);
+    console.error("Error getting all tags: ", err);
     throw err;
   }
 }
@@ -55,9 +55,23 @@ async function deleteTagById(tagId) {
   }
 }
 
+async function addTag(tag) {
+  const query = `
+  INSERT INTO tags (name) VALUES ($1)
+  `;
+
+  try {
+    await pool.query(query, [tag.name]);
+  } catch (err) {
+    console.error("Error adding tag: ", err);
+    throw err;
+  }
+}
+
 module.exports = {
   getAllTags,
   getTagById,
   getTagsBySearchQuery,
   deleteTagById,
+  addTag,
 };
