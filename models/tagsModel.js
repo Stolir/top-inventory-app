@@ -42,4 +42,22 @@ async function getTagsBySearchQuery(search) {
   }
 }
 
-module.exports = { getAllTags, getTagById, getTagsBySearchQuery };
+async function deleteTagById(tagId) {
+  const query = `
+  DELETE FROM tags WHERE id = $1
+  `;
+
+  try {
+    await pool.query(query, [tagId]);
+  } catch (err) {
+    console.error("Error deleting tag: ", err);
+    throw err;
+  }
+}
+
+module.exports = {
+  getAllTags,
+  getTagById,
+  getTagsBySearchQuery,
+  deleteTagById,
+};

@@ -1,6 +1,10 @@
 const { getGamesByTagId } = require("../models/gameTagsModel");
 const { getNavLinks } = require("../models/navbarModel");
-const { getAllTags, getTagById } = require("../models/tagsModel");
+const {
+  getAllTags,
+  getTagById,
+  deleteTagById,
+} = require("../models/tagsModel");
 
 const links = getNavLinks();
 
@@ -22,7 +26,14 @@ async function getTagPage(req, res) {
   res.render("filteredGamesPage", { title: `${tag} Games`, games, links });
 }
 
+async function postTagDelete(req, res) {
+  const { tagId } = req.params;
+  await deleteTagById(tagId);
+  res.redirect(303, "/tags");
+}
+
 module.exports = {
   getAllTagsPage,
   getTagPage,
+  postTagDelete,
 };

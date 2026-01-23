@@ -42,8 +42,22 @@ async function getDevelopersBySearchQuery(search) {
   }
 }
 
+async function deleteDeveloperById(developerId) {
+  const query = `
+  DELETE FROM developers WHERE id = $1
+  `;
+
+  try {
+    await pool.query(query, [developerId]);
+  } catch (err) {
+    console.error("Error deleting developer: ", err);
+    throw err;
+  }
+}
+
 module.exports = {
   getAllDevelopers,
   getDeveloperById,
   getDevelopersBySearchQuery,
+  deleteDeveloperById,
 };

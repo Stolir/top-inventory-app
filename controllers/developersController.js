@@ -1,6 +1,7 @@
 const {
   getAllDevelopers,
   getDeveloperById,
+  deleteDeveloperById,
 } = require("../models/developersModel");
 const { getGamesByDeveloperId } = require("../models/gameDevelopersModel");
 const { getNavLinks } = require("../models/navbarModel");
@@ -29,4 +30,14 @@ async function getDeveloperPage(req, res) {
   });
 }
 
-module.exports = { getAllDevelopersPage, getDeveloperPage };
+async function postDeveloperDelete(req, res) {
+  const { developerId } = req.params;
+  await deleteDeveloperById(developerId);
+  res.redirect(303, "/developers");
+}
+
+module.exports = {
+  getAllDevelopersPage,
+  getDeveloperPage,
+  postDeveloperDelete,
+};
